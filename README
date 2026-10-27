@@ -1,0 +1,140 @@
+# AI-Powered Judicial Outcome Prediction System
+
+An Explainable and Uncertainty-Aware Legal AI System for predicting probable judicial outcomes from legal reasoning text using Natural Language Processing and Machine Learning.
+
+---
+
+## Overview
+
+This project presents a lightweight and interpretable judicial outcome prediction framework for Indian legal case reasoning. The system evaluates legal text and predicts whether the petitioner is likely to succeed or fail based on learned legal patterns.
+
+Unlike transformer-heavy architectures, this work demonstrates that classical NLP methods such as TF-IDF combined with Linear SVM can achieve very high performance with significantly lower computational requirements.
+
+The system also incorporates:
+
+- Explainable AI
+- Probability-based reasoning
+- Uncertainty-aware prediction
+- Legal term influence analysis
+- Web-based deployment using Flask
+
+---
+
+## Key Features
+
+- Judicial outcome prediction from legal reasoning text
+- TF-IDF based feature extraction
+- Linear SVM classification
+- Explainability through influential legal terms
+- Uncertainty-aware prediction logic
+- Interactive Flask web application
+- Lightweight and CPU-friendly architecture
+
+---
+
+## Models Evaluated
+
+| Model | Accuracy |
+|------|------|
+| BERT-based Model | 47.45% |
+| TF-IDF + Logistic Regression | 83.88% |
+| TF-IDF + Linear SVM | 96.66% |
+
+---
+
+## Final Model
+
+The final deployed model uses:
+
+- TF-IDF Vectorization
+- Linear Support Vector Machine (SVM)
+- Probability Calibration
+- Threshold-based Decision Logic
+
+---
+
+## Explainability
+
+The system identifies influential legal terms contributing to predictions.
+
+Example influential terms:
+
+### Class 1 (Petitioner Likely to Succeed)
+- set aside
+- court erred
+- unsustainable
+- impugned order
+- allowed
+
+### Class 0 (Petitioner Likely to Fail)
+- rightly held
+- interference
+- without merit
+- infirmity
+- dismissed
+
+---
+
+## Uncertainty-Aware Prediction
+
+The system handles ambiguous legal disputes by analyzing probability differences between classes.
+
+Example:
+- Strong confidence → Succeed / Fail
+- Near-balanced probabilities → Outcome Uncertain
+
+This improves interpretability and avoids overconfident predictions in legally complex cases.
+
+---
+
+## Tech Stack
+
+### Backend
+- Python
+- Flask
+
+### Machine Learning
+- Scikit-learn
+- TF-IDF
+- Linear SVM
+- Logistic Regression
+
+### NLP
+- Natural Language Processing
+- Feature Engineering
+
+### Frontend
+- HTML
+- CSS
+
+---
+
+## Project Structure
+
+```text
+legal reg/
+│
+├── app_flask.py
+├── baseline_model.py
+├── svm_model.py
+├── train_model.py
+│
+├── templates/
+│   └── index.html
+│
+├── static/
+│   └── style.css
+│
+├── train_multi.csv
+├── train_single.csv
+├── dev.csv
+├── test.csv
+│
+├── legal_model.pkl
+├── tfidf_vectorizer.pkl
+├── svm_legal_model.pkl
+├── svm_tfidf_vectorizer.pkl
+│
+├── screenshots/
+│
+└── README.md
