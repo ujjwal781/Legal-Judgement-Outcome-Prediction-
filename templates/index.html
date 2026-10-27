@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judicial Outcome Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page">
+
+    <header class="hero">
+        <div>
+            <p class="badge">Legal AI • Explainable NLP • SVM</p>
+            <h1>AI-Powered Judicial Outcome Prediction</h1>
+            <p class="subtitle">
+                An explainable and uncertainty-aware system for predicting probable legal outcomes from case reasoning.
+            </p>
+        </div>
+    </header>
+
+    <main class="grid">
+
+        <section class="card input-card">
+            <h2>Enter Case Reasoning</h2>
+
+            <form method="POST">
+                <textarea
+                    name="legal_text"
+                    placeholder="Paste legal facts or reasoning text here..."
+                    required></textarea>
+
+                <button type="submit">Predict Outcome</button>
+            </form>
+        </section>
+
+        <section class="card output-card">
+
+            {% if prediction %}
+                <h2>Prediction Result</h2>
+
+                <div class="prediction-box">
+                    <p>{{ prediction }}</p>
+                </div>
+            {% else %}
+                <h2>Prediction Result</h2>
+                <p class="empty-text">
+                    Submit a case reasoning text to view the predicted judicial outcome.
+                </p>
+            {% endif %}
+
+        </section>
+
+    </main>
+
+    {% if top_words %}
+
+    <section class="card explain-card">
+
+        <h2>Top Influential Legal Terms</h2>
+        <p class="explain-text">
+            These terms contributed strongly to the model’s prediction based on TF-IDF and Linear SVM weights.
+        </p>
+
+        <div class="terms-grid">
+            {% for word, score in top_words %}
+            <div class="term-pill">
+                <span class="term">{{ word }}</span>
+                <span class="score">Score: {{ score }}</span>
+            </div>
+            {% endfor %}
+        </div>
+
+    </section>
+
+    {% endif %}
+
+    <footer>
+        <p>
+            Model: TF-IDF + Linear SVM | Accuracy: 96.66% | Features: Explainability + Uncertainty Detection
+        </p>
+    </footer>
+
+</div>
+
+</body>
+</html>
